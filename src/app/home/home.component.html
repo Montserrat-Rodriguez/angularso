@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="back">
+    <head>
+        <meta charset="uft-8" class="toolbar" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="grid-container">
+                <select id="filtrar" class="custom-select" [(ngModel)]="filtrar">
+                    <option value="carrera">Carrera</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="edad">Edad</option>
+                </select>
+                <input type="text" placeholder="Filtrar" class="form-controlFiltrar" [(ngModel)]="filtrarinput">
+                <button id="buttonCancelar" (click)="Filtrar()" class="btnform">
+                        Filtrar
+                </button> 
+                <button id="buttonsinfiltro" (click)="SinFiltrar()" class="btnform">
+                    Quitar filtro
+                </button> 
+            </div>            
+            <div class="row">
+                <div class="col-md-12 mt-4">
+                    <ul class="list-group">
+                        <li
+                        *ngFor="let alumno of alumnos" 
+                        class="list-group-item list-group-item-action" (click)="openEdit(alumno)"
+                        [class.active]="alumno == selectedAlumno">
+                            Nombre: {{ alumno.nombre}} Apellidos: {{alumno.apellidos}} Carrera: {{alumno.carrera}} Edad: {{alumno.edad}}
+                        </li>        
+                    </ul >
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="card-title">
+                            Insertar un nuevo alumno
+                            </div>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="nombre" placeholder="Nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="apellidos" placeholder="Apellidos" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="edad" placeholder="Edad" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="sexo" placeholder="Sexo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" [(ngModel)]="direccion" placeholder="Dirección" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <select id="carrera" class="custom-select d-block w-100" [(ngModel)]="carrera">
+                                    <option value="1">Desarrollo de software</option>
+                                    <option value="2">Biomédica</option>
+                                    <option value="3">Mecatronica</option>
+                                    <option value="4">Agroindustrial</option>
+                                    <option value="5">Energía</option>
+                                    <option value="6">Ambiental</option>
+                                    <option value="7">Petrolera</option>
+                                    <option value="8">Tecnologías de Manufactura</option>
+                                </select>
+                            </div>      
+                            <button (click)="AddAlumno()" class="btnform">
+                                Registrar
+                            </button> 
+                            <button id="buttonModificar" (click)="UpdateAlumno()" class="btnform">
+                                    Modificar
+                            </button> 
+                            <button id="buttonEliminar"(click)="Delete()" class="btnform">
+                                    Eliminar
+                            </button>  
+                            <button id="buttonCancelar" (click)="Cancelar()" class="btnform">
+                                    Cancelar
+                            </button>                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>    
+</html>
